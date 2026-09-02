@@ -25,6 +25,12 @@
 
 ## GitHub Repository Push
 
-- [ ] Inspect local Git state, remotes, and GitHub authentication.
-- [ ] Configure https://github.com/danielglence/apexcut.git as the repository remote and push the current project.
-- [ ] Verify the remote branch and report the repository URL.
+- [x] Inspect local Git state, remotes, and GitHub authentication.
+- [x] Configure https://github.com/danielglence/apexcut.git as the repository remote and push the current project.
+- [x] Verify the remote branch and report the repository URL.
+
+## Vercel Deployment Repair
+
+- [ ] Inspect the deployed URL and Vercel-relevant project structure.
+- [ ] Add or correct Vercel build/output configuration and update the repository.
+- [ ] Verify the production build and document the required redeploy step.
