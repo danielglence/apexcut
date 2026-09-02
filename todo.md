@@ -22,3 +22,9 @@
 - [x] Audit all visible and metadata references to I Cut.
 - [x] Replace the brand name everywhere with Apex Cut.
 - [x] Verify no stale I Cut references remain and save the checkpoint.
+
+## GitHub Repository Push
+
+- [ ] Inspect local Git state, remotes, and GitHub authentication.
+- [ ] Configure https://github.com/danielglence/apexcut.git as the repository remote and push the current project.
+- [ ] Verify the remote branch and report the repository URL.
