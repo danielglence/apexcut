@@ -21,6 +21,8 @@ export const siteConfig = {
   locality: "Muvattupuzha, Kerala 686669",
   phone: "07902833507",
   phoneDisplay: "+91 79028 33507",
+  whatsapp: "917902833507",
+  whatsappMessage: "Hello Apex Cut, I’d like to book an appointment.",
   instagram: "https://www.instagram.com/its.me._.arun/",
   maps:
     "https://www.google.com/maps/search/?api=1&query=I+Cut+Hair+Grooming+Studio%2C+Mudavoor%2C+near+Scrub+A+Dubb+Car+Wash%2C+Muvattupuzha%2C+Kerala+686669",

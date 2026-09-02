@@ -19,6 +19,9 @@ import {
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { gallery, navItems, reasons, services, siteConfig } from "@/lib/siteData";
 
+const getWhatsAppUrl = (message: string) => `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
+const whatsappBookingHref = getWhatsAppUrl(siteConfig.whatsappMessage);
+
 type FormState = {
   name: string;
   phone: string;
@@ -162,7 +165,16 @@ function Home() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validate()) return;
-    setSubmitted(true);
+    const bookingMessage = [
+      "Hello Apex Cut, I’d like to book an appointment.",
+      `Name: ${form.name.trim()}`,
+      `Phone: ${form.phone.trim()}`,
+      `Service: ${form.service}`,
+      `Preferred date: ${form.date}`,
+      `Preferred time: ${form.time}`,
+      form.message.trim() ? `Message: ${form.message.trim()}` : "",
+    ].filter(Boolean).join("\\n");
+    window.location.assign(getWhatsAppUrl(bookingMessage));
   };
 
   const motionProps = prefersReducedMotion ? {} : { initial: "hidden", whileInView: "visible", viewport: { once: true, amount: 0.18 } };
@@ -186,7 +198,7 @@ function Home() {
               <Phone className="h-3.5 w-3.5 text-[#C6A15B]" />
               {siteConfig.phoneDisplay}
             </a>
-            <a className="gold-button !min-h-0 !px-4 !py-3" href="#appointment">Book appointment</a>
+            <a className="gold-button !min-h-0 !px-4 !py-3" href={whatsappBookingHref} target="_blank" rel="noreferrer">Book appointment</a>
           </div>
           <button className="inline-flex h-11 w-11 items-center justify-center border border-white/15 text-[#F5F0E8] lg:hidden" onClick={() => setMenuOpen(true)} aria-label="Open navigation menu" aria-expanded={menuOpen}>
             <Menu className="h-5 w-5" />
@@ -211,7 +223,7 @@ function Home() {
                 </motion.a>
               ))}
             </nav>
-            <a href="#appointment" onClick={() => setMenuOpen(false)} className="gold-button mt-12 w-full">Book an appointment <ArrowUpRight className="h-4 w-4" /></a>
+            <a href={whatsappBookingHref} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)} className="gold-button mt-12 w-full">Book an appointment <ArrowUpRight className="h-4 w-4" /></a>
           </motion.div>
         ) : null}
       </AnimatePresence>
@@ -230,7 +242,7 @@ function Home() {
                 </motion.h1>
                 <motion.p variants={reveal} transition={{ duration: 0.65, delay: 0.22 }} className="mt-7 max-w-lg text-sm leading-7 text-[#D2D0CA] sm:text-base">{siteConfig.description}</motion.p>
                 <motion.div variants={reveal} transition={{ duration: 0.65, delay: 0.31 }} className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a href="#appointment" className="gold-button">Book an appointment <ArrowUpRight className="h-4 w-4" /></a>
+                  <a href={whatsappBookingHref} target="_blank" rel="noreferrer" className="gold-button">Book an appointment <ArrowUpRight className="h-4 w-4" /></a>
                   <a href={siteConfig.maps} target="_blank" rel="noreferrer" className="ghost-button">Get directions <MapPin className="h-4 w-4 text-[#C6A15B]" /></a>
                 </motion.div>
               </motion.div>
@@ -299,7 +311,7 @@ function Home() {
                       <div className="flex items-start justify-between"><span className="flex h-11 w-11 items-center justify-center border border-[#C6A15B]/55 text-[#C6A15B]"><Icon className="h-5 w-5" strokeWidth={1.5} /></span><span className="text-[0.62rem] font-bold tracking-[0.16em] text-[#767676]">0{index + 1}</span></div>
                       <h3 className="display-font mt-12 text-3xl font-semibold text-[#F5F0E8]">{service.name}</h3>
                       <p className="mt-3 min-h-[70px] text-sm leading-6 text-[#A8A8A8]">{service.description}</p>
-                      <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-4"><span className="text-[0.63rem] font-bold uppercase tracking-[0.14em] text-[#C6A15B]">Contact for price</span><a href="#appointment" className="inline-flex items-center gap-1 text-[0.63rem] font-bold uppercase tracking-[0.14em] text-[#F5F0E8] transition-colors group-hover:text-[#C6A15B]">Book now <ArrowUpRight className="h-3.5 w-3.5" /></a></div>
+                      <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-4"><span className="text-[0.63rem] font-bold uppercase tracking-[0.14em] text-[#C6A15B]">Contact for price</span><a href={whatsappBookingHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-[0.63rem] font-bold uppercase tracking-[0.14em] text-[#F5F0E8] transition-colors group-hover:text-[#C6A15B]">Book now <ArrowUpRight className="h-3.5 w-3.5" /></a></div>
                     </motion.article>
                   );
                 })}
@@ -362,7 +374,7 @@ function Home() {
               </motion.div>
               <motion.div variants={reveal} transition={{ duration: 0.65 }} className="surface p-6 sm:p-9">
                 {submitted ? (
-                  <div className="flex min-h-[420px] flex-col justify-center" aria-live="polite"><span className="flex h-14 w-14 items-center justify-center rounded-full border border-[#C6A15B] text-[#C6A15B]"><Check className="h-6 w-6" /></span><p className="eyebrow mt-8">Request ready</p><h3 className="display-font mt-3 max-w-md text-5xl font-semibold leading-[0.92] text-[#F5F0E8]">Your details are ready.</h3><p className="mt-5 max-w-md text-sm leading-7 text-[#A8A8A8]">Please contact the salon to confirm your booking. We’ve kept your request here so you have everything in one place.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={`tel:+91${siteConfig.phone.slice(1)}`} className="gold-button">Call the studio <Phone className="h-4 w-4" /></a><button onClick={() => { setSubmitted(false); setForm(initialForm); }} className="ghost-button">Start again</button></div></div>
+                  <div className="flex min-h-[420px] flex-col justify-center" aria-live="polite"><span className="flex h-14 w-14 items-center justify-center rounded-full border border-[#C6A15B] text-[#C6A15B]"><Check className="h-6 w-6" /></span><p className="eyebrow mt-8">Request ready</p><h3 className="display-font mt-3 max-w-md text-5xl font-semibold leading-[0.92] text-[#F5F0E8]">Your details are ready.</h3><p className="mt-5 max-w-md text-sm leading-7 text-[#A8A8A8]">Please contact the salon to confirm your booking. We’ve kept your request here so you have everything in one place.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={whatsappBookingHref} target="_blank" rel="noreferrer" className="gold-button">Continue in WhatsApp <ArrowUpRight className="h-4 w-4" /></a><button onClick={() => { setSubmitted(false); setForm(initialForm); }} className="ghost-button">Start again</button></div></div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
                     <div className="grid gap-5 sm:grid-cols-2">
@@ -373,7 +385,7 @@ function Home() {
                       <label className="block"><span className="mb-2 block text-xs font-bold uppercase tracking-[0.12em] text-[#A8A8A8]">Preferred time <span className="text-[#C6A15B]">*</span></span><input type="time" className={`input-field ${errors.time ? "input-error" : ""}`} value={form.time} onChange={(event) => updateField("time", event.target.value)} />{errors.time ? <span className="mt-1 block text-xs text-[#D58B78]">{errors.time}</span> : null}</label>
                       <label className="block sm:col-span-2"><span className="mb-2 block text-xs font-bold uppercase tracking-[0.12em] text-[#A8A8A8]">Optional message</span><textarea className="input-field min-h-28 resize-y" value={form.message} onChange={(event) => updateField("message", event.target.value)} placeholder="Anything you’d like us to know?" /></label>
                     </div>
-                    <button type="submit" className="gold-button mt-7 w-full sm:w-auto">Prepare appointment request <ArrowUpRight className="h-4 w-4" /></button>
+                    <button type="submit" className="gold-button mt-7 w-full sm:w-auto">Send request on WhatsApp <ArrowUpRight className="h-4 w-4" /></button>
                     <p className="mt-4 text-xs leading-5 text-[#767676]">No payment is taken and no appointment is confirmed by this form. We’ll ask you to contact the studio to confirm.</p>
                   </form>
                 )}
@@ -385,7 +397,7 @@ function Home() {
         <section id="contact" className="bg-[#0B0B0B] py-24 sm:py-32">
           <div className="container">
             <motion.div {...motionProps} variants={stagger} className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
-              <motion.div variants={reveal} transition={{ duration: 0.6 }}><div className="section-kicker">Find the studio</div><h2 className="display-font mt-5 text-5xl font-semibold leading-[0.9] tracking-[-0.04em] sm:text-7xl">Meet us in<br /><em className="font-medium text-[#C6A15B]">Mudavoor.</em></h2><div className="mt-12 space-y-6 border-t border-white/15 pt-6"><div className="flex gap-4"><MapPin className="mt-1 h-5 w-5 shrink-0 text-[#C6A15B]" /><address className="not-italic text-sm leading-7 text-[#D2D0CA]">{siteConfig.address}<br />{siteConfig.locality}</address></div><div className="flex gap-4"><Phone className="mt-1 h-5 w-5 shrink-0 text-[#C6A15B]" /><a href={`tel:+91${siteConfig.phone.slice(1)}`} className="text-sm text-[#D2D0CA] transition-colors hover:text-[#C6A15B]">{siteConfig.phoneDisplay}</a></div><div className="flex gap-4"><Instagram className="mt-1 h-5 w-5 shrink-0 text-[#C6A15B]" /><a href={siteConfig.instagram} target="_blank" rel="noreferrer" className="text-sm text-[#D2D0CA] transition-colors hover:text-[#C6A15B]">Follow @its.me._.arun</a></div></div><div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={siteConfig.maps} target="_blank" rel="noreferrer" className="gold-button">Open in Google Maps <MapPin className="h-4 w-4" /></a><a href="#appointment" className="ghost-button">Book a visit <CalendarDays className="h-4 w-4 text-[#C6A15B]" /></a></div></motion.div>
+              <motion.div variants={reveal} transition={{ duration: 0.6 }}><div className="section-kicker">Find the studio</div><h2 className="display-font mt-5 text-5xl font-semibold leading-[0.9] tracking-[-0.04em] sm:text-7xl">Meet us in<br /><em className="font-medium text-[#C6A15B]">Mudavoor.</em></h2><div className="mt-12 space-y-6 border-t border-white/15 pt-6"><div className="flex gap-4"><MapPin className="mt-1 h-5 w-5 shrink-0 text-[#C6A15B]" /><address className="not-italic text-sm leading-7 text-[#D2D0CA]">{siteConfig.address}<br />{siteConfig.locality}</address></div><div className="flex gap-4"><Phone className="mt-1 h-5 w-5 shrink-0 text-[#C6A15B]" /><a href={`tel:+91${siteConfig.phone.slice(1)}`} className="text-sm text-[#D2D0CA] transition-colors hover:text-[#C6A15B]">{siteConfig.phoneDisplay}</a></div><div className="flex gap-4"><Instagram className="mt-1 h-5 w-5 shrink-0 text-[#C6A15B]" /><a href={siteConfig.instagram} target="_blank" rel="noreferrer" className="text-sm text-[#D2D0CA] transition-colors hover:text-[#C6A15B]">Follow @its.me._.arun</a></div></div><div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={siteConfig.maps} target="_blank" rel="noreferrer" className="gold-button">Open in Google Maps <MapPin className="h-4 w-4" /></a><a href={whatsappBookingHref} target="_blank" rel="noreferrer" className="ghost-button">Book a visit <CalendarDays className="h-4 w-4 text-[#C6A15B]" /></a></div></motion.div>
               <motion.div variants={reveal} transition={{ duration: 0.65 }} className="image-frame min-h-[360px] lg:min-h-[500px]"><iframe title="Map showing Apex Cut Hair Grooming Studio in Mudavoor, Muvattupuzha" src={siteConfig.mapsEmbed} className="h-full min-h-[360px] w-full grayscale invert-[0.88] opacity-80 lg:min-h-[500px]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><div className="pointer-events-none absolute inset-0 bg-[#C6A15B]/[0.06] mix-blend-color" /></motion.div>
             </motion.div>
           </div>
@@ -403,7 +415,7 @@ function Home() {
         </div>
       </footer>
 
-      <div className="mobile-actions fixed inset-x-4 bottom-4 z-40 grid grid-cols-2 gap-2 sm:hidden"><a href="#appointment" className="gold-button shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Book <CalendarDays className="h-4 w-4" /></a><a href={siteConfig.maps} target="_blank" rel="noreferrer" className="ghost-button bg-[#151515]/95 shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Directions <MapPin className="h-4 w-4 text-[#C6A15B]" /></a></div>
+      <div className="mobile-actions fixed inset-x-4 bottom-4 z-40 grid grid-cols-2 gap-2 sm:hidden"><a href={whatsappBookingHref} target="_blank" rel="noreferrer" className="gold-button shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Book <CalendarDays className="h-4 w-4" /></a><a href={siteConfig.maps} target="_blank" rel="noreferrer" className="ghost-button bg-[#151515]/95 shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Directions <MapPin className="h-4 w-4 text-[#C6A15B]" /></a></div>
 
       <AnimatePresence>
         {selectedImage ? (

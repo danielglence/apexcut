@@ -34,3 +34,9 @@
 - [x] Inspect the deployed URL and Vercel-relevant project structure.
 - [x] Add or correct Vercel build/output configuration and update the repository.
 - [x] Verify the production build and document the required redeploy step.
+
+## WhatsApp Booking Redirect
+
+- [ ] Audit all booking buttons and the salon phone configuration.
+- [ ] Add a shared pre-filled WhatsApp booking URL and use it for every booking CTA.
+- [ ] Verify the generated links and save the updated checkpoint.
