@@ -10,6 +10,7 @@ import {
   Clock3,
   Instagram,
   MapPin,
+  MessageCircle,
   Menu,
   Phone,
   Scissors,
@@ -414,6 +415,19 @@ function Home() {
           <div className="mt-14 flex flex-col justify-between gap-5 border-t border-white/10 pt-6 text-[0.65rem] font-bold uppercase tracking-[0.13em] text-[#767676] sm:flex-row sm:items-center"><span>© {new Date().getFullYear()} Apex Cut Hair Grooming Studio</span><a href="#home" className="inline-flex items-center gap-2 transition-colors hover:text-[#F5F0E8]">Back to top <ArrowDown className="h-3.5 w-3.5 rotate-180" /></a></div>
         </div>
       </footer>
+
+      <div className="floating-socials" aria-label="Social links">
+        <a className="floating-social floating-social-whatsapp" href={whatsappBookingHref} target="_blank" rel="noreferrer" aria-label="Chat with Apex Cut on WhatsApp">
+          <span className="floating-social-dot" aria-hidden="true" />
+          <MessageCircle className="h-4 w-4" aria-hidden="true" />
+          <span className="floating-social-label">WhatsApp</span>
+        </a>
+        <a className="floating-social floating-social-instagram" href={siteConfig.instagram} target="_blank" rel="noreferrer" aria-label="Follow Apex Cut on Instagram">
+          <span className="floating-social-dot" aria-hidden="true" />
+          <Instagram className="h-4 w-4" aria-hidden="true" />
+          <span className="floating-social-label">Instagram</span>
+        </a>
+      </div>
 
       <div className="mobile-actions fixed inset-x-4 bottom-4 z-40 grid grid-cols-2 gap-2 sm:hidden"><a href={whatsappBookingHref} target="_blank" rel="noreferrer" className="gold-button shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Book <CalendarDays className="h-4 w-4" /></a><a href={siteConfig.maps} target="_blank" rel="noreferrer" className="ghost-button bg-[#151515]/95 shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Directions <MapPin className="h-4 w-4 text-[#C6A15B]" /></a></div>
 

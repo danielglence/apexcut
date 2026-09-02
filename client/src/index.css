@@ -509,3 +509,120 @@ main > section:not(#home) {
     @apply border-border outline-ring/50;
   }
 }
+
+/* Noir Atelier social rail: restrained charcoal pills, warm-gold cues, and touch-safe placement above mobile actions. */
+.floating-socials {
+  position: fixed;
+  top: 50%;
+  right: 1.25rem;
+  z-index: 45;
+  display: flex;
+  transform: translateY(-50%);
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.floating-social {
+  position: relative;
+  display: inline-flex;
+  width: 3.25rem;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.65rem;
+  overflow: hidden;
+  border: 1px solid rgb(198 161 91 / 0.42);
+  background: rgb(21 21 21 / 0.94);
+  padding-inline: 1rem;
+  color: #f5f0e8;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.24);
+  transition: width 180ms cubic-bezier(0.23, 1, 0.32, 1), transform 180ms cubic-bezier(0.23, 1, 0.32, 1), border-color 180ms ease, background-color 180ms ease;
+}
+
+.floating-social:hover,
+.floating-social:focus-visible {
+  width: 8rem;
+  transform: translateX(-0.2rem);
+  border-color: #c6a15b;
+  background: #1c1c1c;
+}
+
+.floating-social:active {
+  transform: translateX(-0.2rem) scale(0.97);
+}
+
+.floating-social-label {
+  opacity: 0;
+  transform: translateX(0.5rem);
+  white-space: nowrap;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.floating-social:hover .floating-social-label,
+.floating-social:focus-visible .floating-social-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.floating-social-dot {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: #c6a15b;
+  box-shadow: 0 0 0 3px rgb(11 11 11 / 0.9);
+}
+
+.floating-social-whatsapp svg {
+  color: #86d79a;
+}
+
+.floating-social-whatsapp .floating-social-dot {
+  background: #86d79a;
+}
+
+.floating-social-instagram svg {
+  color: #e5b2a2;
+}
+
+.floating-social-instagram .floating-social-dot {
+  background: #e5b2a2;
+}
+
+@media (max-width: 767px) {
+  .floating-socials {
+    top: auto;
+    right: 1.25rem;
+    bottom: 6.4rem;
+    transform: none;
+    gap: 0.6rem;
+  }
+
+  .floating-social,
+  .floating-social:hover,
+  .floating-social:focus-visible {
+    width: 3rem;
+    min-height: 3rem;
+    justify-content: center;
+    padding-inline: 0;
+    transform: none;
+  }
+
+  .floating-social-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-social,
+  .floating-social-label {
+    transition: none;
+  }
+}

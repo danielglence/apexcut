@@ -40,3 +40,9 @@
 - [ ] Audit all booking buttons and the salon phone configuration.
 - [ ] Add a shared pre-filled WhatsApp booking URL and use it for every booking CTA.
 - [ ] Verify the generated links and save the updated checkpoint.
+
+## Floating Social Notifications
+
+- [x] Audit the current mobile actions and social configuration.
+- [x] Add accessible floating WhatsApp and Instagram controls on the right side.
+- [x] Verify responsive positioning and save the updated checkpoint.
