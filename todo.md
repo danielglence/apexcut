@@ -31,6 +31,6 @@
 
 ## Vercel Deployment Repair
 
-- [ ] Inspect the deployed URL and Vercel-relevant project structure.
-- [ ] Add or correct Vercel build/output configuration and update the repository.
-- [ ] Verify the production build and document the required redeploy step.
+- [x] Inspect the deployed URL and Vercel-relevant project structure.
+- [x] Add or correct Vercel build/output configuration and update the repository.
+- [x] Verify the production build and document the required redeploy step.
