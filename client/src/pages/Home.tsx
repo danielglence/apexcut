@@ -131,6 +131,17 @@ function Home() {
     };
   }, [selectedImage, menuOpen]);
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedImage(null);
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   const updateField = (field: keyof FormState, value: string) => {
     setForm((current) => ({ ...current, [field]: value }));
     if (errors[field]) setErrors((current) => ({ ...current, [field]: undefined }));
@@ -207,7 +218,7 @@ function Home() {
 
       <main>
         <section id="home" className="relative isolate flex min-h-[740px] items-end overflow-hidden pb-16 pt-32 sm:min-h-screen sm:pb-20 lg:items-center lg:pb-12">
-          <img className="hero-image absolute inset-0 -z-20 h-full w-full object-cover object-center" src={siteConfig.assets.hero} alt="Dark, refined grooming studio interior with a barber chair and brass-framed mirror" />
+          <img className="hero-image absolute inset-0 -z-20 h-full w-full object-cover object-center" src={siteConfig.assets.hero} alt="Dark, refined grooming studio interior with a barber chair and brass-framed mirror" fetchPriority="high" decoding="async" />
           <div className="hero-vignette absolute inset-0 -z-10" />
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_42%,rgba(198,161,91,0.15),transparent_28%)]" />
           <div className="container relative w-full">
@@ -322,7 +333,7 @@ function Home() {
               <div className="mt-14 grid auto-rows-[160px] grid-cols-2 gap-3 sm:auto-rows-[220px] sm:grid-cols-4 lg:mt-20 lg:auto-rows-[240px] lg:grid-cols-12">
                 {gallery.map((item, index) => (
                   <motion.button key={item.src} variants={reveal} transition={{ duration: 0.5, delay: index * 0.045 }} onClick={() => setSelectedImage(item)} className={`image-frame group text-left ${item.size === "tall" ? "row-span-2" : ""} ${index === 0 ? "col-span-2 lg:col-span-6" : index === 1 ? "lg:col-span-3" : index === 2 ? "col-span-2 lg:col-span-3" : index === 3 ? "lg:col-span-3" : index === 4 ? "lg:col-span-3" : "col-span-2 lg:col-span-6"}`} aria-label={`View larger image: ${item.label}`}>
-                    <img src={item.src} alt={item.alt} className="h-full w-full object-cover" loading="lazy" />
+                    <img src={item.src} alt={item.alt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
                     <div className="absolute inset-x-0 bottom-0 z-10 flex translate-y-1 items-end justify-between bg-gradient-to-t from-[#0B0B0B]/85 to-transparent px-4 pb-4 pt-10 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"><span className="text-xs font-bold uppercase tracking-[0.16em] text-[#F5F0E8]">{item.label}</span><ArrowUpRight className="h-4 w-4 text-[#C6A15B]" /></div>
                   </motion.button>
                 ))}
@@ -351,7 +362,7 @@ function Home() {
               </motion.div>
               <motion.div variants={reveal} transition={{ duration: 0.65 }} className="surface p-6 sm:p-9">
                 {submitted ? (
-                  <div className="flex min-h-[420px] flex-col justify-center"><span className="flex h-14 w-14 items-center justify-center rounded-full border border-[#C6A15B] text-[#C6A15B]"><Check className="h-6 w-6" /></span><p className="eyebrow mt-8">Request ready</p><h3 className="display-font mt-3 max-w-md text-5xl font-semibold leading-[0.92] text-[#F5F0E8]">Your details are ready.</h3><p className="mt-5 max-w-md text-sm leading-7 text-[#A8A8A8]">Please contact the salon to confirm your booking. We’ve kept your request here so you have everything in one place.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={`tel:+91${siteConfig.phone.slice(1)}`} className="gold-button">Call the studio <Phone className="h-4 w-4" /></a><button onClick={() => { setSubmitted(false); setForm(initialForm); }} className="ghost-button">Start again</button></div></div>
+                  <div className="flex min-h-[420px] flex-col justify-center" aria-live="polite"><span className="flex h-14 w-14 items-center justify-center rounded-full border border-[#C6A15B] text-[#C6A15B]"><Check className="h-6 w-6" /></span><p className="eyebrow mt-8">Request ready</p><h3 className="display-font mt-3 max-w-md text-5xl font-semibold leading-[0.92] text-[#F5F0E8]">Your details are ready.</h3><p className="mt-5 max-w-md text-sm leading-7 text-[#A8A8A8]">Please contact the salon to confirm your booking. We’ve kept your request here so you have everything in one place.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={`tel:+91${siteConfig.phone.slice(1)}`} className="gold-button">Call the studio <Phone className="h-4 w-4" /></a><button onClick={() => { setSubmitted(false); setForm(initialForm); }} className="ghost-button">Start again</button></div></div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
                     <div className="grid gap-5 sm:grid-cols-2">
@@ -392,7 +403,7 @@ function Home() {
         </div>
       </footer>
 
-      <div className="fixed inset-x-4 bottom-4 z-40 grid grid-cols-2 gap-2 sm:hidden"><a href="#appointment" className="gold-button shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Book <CalendarDays className="h-4 w-4" /></a><a href={siteConfig.maps} target="_blank" rel="noreferrer" className="ghost-button bg-[#151515]/95 shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Directions <MapPin className="h-4 w-4 text-[#C6A15B]" /></a></div>
+      <div className="mobile-actions fixed inset-x-4 bottom-4 z-40 grid grid-cols-2 gap-2 sm:hidden"><a href="#appointment" className="gold-button shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Book <CalendarDays className="h-4 w-4" /></a><a href={siteConfig.maps} target="_blank" rel="noreferrer" className="ghost-button bg-[#151515]/95 shadow-[0_10px_30px_rgba(0,0,0,0.28)]">Directions <MapPin className="h-4 w-4 text-[#C6A15B]" /></a></div>
 
       <AnimatePresence>
         {selectedImage ? (
