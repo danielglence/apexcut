@@ -10,3 +10,9 @@
 
 - [x] Replace gallery URL keys with stable unique gallery item IDs.
 - [x] Run build and browser-console verification after the fix.
+
+## Spacing Refinement
+
+- [x] Audit cramped spacing across section wrappers, cards, form fields, and mobile controls.
+- [x] Apply a consistent breathing-room pass across desktop and mobile layouts.
+- [x] Recheck responsive screenshots and save the updated checkpoint.
