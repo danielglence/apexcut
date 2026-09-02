@@ -77,7 +77,7 @@ function BrandMark({ small = false }: { small?: boolean }) {
       <span className={`relative inline-flex items-center justify-center overflow-hidden rounded-full border border-[#C6A15B] ${small ? "h-8 w-8" : "h-10 w-10"}`}>
         <span className="display-font text-sm font-semibold tracking-[-0.08em] text-[#C6A15B]">IC</span>
       </span>
-      <span className={`display-font font-semibold tracking-[0.2em] text-[#F5F0E8] ${small ? "text-lg" : "text-xl"}`}>I CUT</span>
+      <span className={`display-font font-semibold tracking-[0.2em] text-[#F5F0E8] ${small ? "text-lg" : "text-xl"}`}>APEX CUT</span>
     </span>
   );
 }
@@ -265,7 +265,7 @@ function Home() {
                 </div>
               </motion.div>
               <motion.div variants={reveal} transition={{ duration: 0.65 }} className="lg:pt-8">
-                <SectionHeading eyebrow="The I Cut approach" title="More than just a haircut" body="I Cut Hair Grooming Studio is a modern local destination for people who care about the details. Expect precise work, thoughtful styling, and a comfortable space designed to make time in the chair feel considered." />
+                <SectionHeading eyebrow="The Apex Cut approach" title="More than just a haircut" body="Apex Cut Hair Grooming Studio is a modern local destination for people who care about the details. Expect precise work, thoughtful styling, and a comfortable space designed to make time in the chair feel considered." />
                 <div className="mt-14 grid gap-6 sm:grid-cols-3 lg:mt-20">
                   {[
                     { number: "01", title: "Expert Grooming", text: "Precision work that respects your texture, proportions, and routine." },
@@ -312,7 +312,7 @@ function Home() {
           <div className="container">
             <motion.div {...motionProps} variants={stagger} className="grid gap-14 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-28">
               <motion.div variants={reveal} transition={{ duration: 0.6 }}>
-                <div className="section-kicker">Why I Cut</div>
+                <div className="section-kicker">Why Apex Cut</div>
                 <h2 className="display-font mt-5 text-5xl font-semibold leading-[0.9] tracking-[-0.04em] sm:text-6xl">Good grooming<br /><em className="font-medium text-[#C6A15B]">is personal.</em></h2>
                 <p className="mt-7 max-w-md text-sm leading-7 text-[#A8A8A8]">From the first consultation to the final finish, the studio is built around clear details, modern technique, and making the experience feel easy.</p>
                 <div className="mt-12 flex items-end gap-5"><span className="display-font text-7xl font-semibold leading-none text-[#F5F0E8]">35</span><span className="mb-1 max-w-[130px] text-xs leading-5 text-[#A8A8A8]">five-star reviews from happy customers</span></div>
@@ -386,7 +386,7 @@ function Home() {
           <div className="container">
             <motion.div {...motionProps} variants={stagger} className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
               <motion.div variants={reveal} transition={{ duration: 0.6 }}><div className="section-kicker">Find the studio</div><h2 className="display-font mt-5 text-5xl font-semibold leading-[0.9] tracking-[-0.04em] sm:text-7xl">Meet us in<br /><em className="font-medium text-[#C6A15B]">Mudavoor.</em></h2><div className="mt-12 space-y-6 border-t border-white/15 pt-6"><div className="flex gap-4"><MapPin className="mt-1 h-5 w-5 shrink-0 text-[#C6A15B]" /><address className="not-italic text-sm leading-7 text-[#D2D0CA]">{siteConfig.address}<br />{siteConfig.locality}</address></div><div className="flex gap-4"><Phone className="mt-1 h-5 w-5 shrink-0 text-[#C6A15B]" /><a href={`tel:+91${siteConfig.phone.slice(1)}`} className="text-sm text-[#D2D0CA] transition-colors hover:text-[#C6A15B]">{siteConfig.phoneDisplay}</a></div><div className="flex gap-4"><Instagram className="mt-1 h-5 w-5 shrink-0 text-[#C6A15B]" /><a href={siteConfig.instagram} target="_blank" rel="noreferrer" className="text-sm text-[#D2D0CA] transition-colors hover:text-[#C6A15B]">Follow @its.me._.arun</a></div></div><div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href={siteConfig.maps} target="_blank" rel="noreferrer" className="gold-button">Open in Google Maps <MapPin className="h-4 w-4" /></a><a href="#appointment" className="ghost-button">Book a visit <CalendarDays className="h-4 w-4 text-[#C6A15B]" /></a></div></motion.div>
-              <motion.div variants={reveal} transition={{ duration: 0.65 }} className="image-frame min-h-[360px] lg:min-h-[500px]"><iframe title="Map showing I Cut Hair Grooming Studio in Mudavoor, Muvattupuzha" src={siteConfig.mapsEmbed} className="h-full min-h-[360px] w-full grayscale invert-[0.88] opacity-80 lg:min-h-[500px]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><div className="pointer-events-none absolute inset-0 bg-[#C6A15B]/[0.06] mix-blend-color" /></motion.div>
+              <motion.div variants={reveal} transition={{ duration: 0.65 }} className="image-frame min-h-[360px] lg:min-h-[500px]"><iframe title="Map showing Apex Cut Hair Grooming Studio in Mudavoor, Muvattupuzha" src={siteConfig.mapsEmbed} className="h-full min-h-[360px] w-full grayscale invert-[0.88] opacity-80 lg:min-h-[500px]" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /><div className="pointer-events-none absolute inset-0 bg-[#C6A15B]/[0.06] mix-blend-color" /></motion.div>
             </motion.div>
           </div>
         </section>
@@ -399,7 +399,7 @@ function Home() {
             <div><p className="eyebrow">Explore</p><nav className="mt-5 flex flex-col gap-3 text-sm text-[#A8A8A8]">{navItems.map((item) => <a key={item.href} href={item.href} className="transition-colors hover:text-[#C6A15B]">{item.label}</a>)}</nav></div>
             <div><p className="eyebrow">Visit</p><p className="mt-5 text-sm leading-7 text-[#A8A8A8]">{siteConfig.address}<br />{siteConfig.locality}</p><a href={siteConfig.instagram} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm text-[#F5F0E8] transition-colors hover:text-[#C6A15B]"><Instagram className="h-4 w-4" /> Instagram</a></div>
           </div>
-          <div className="mt-14 flex flex-col justify-between gap-5 border-t border-white/10 pt-6 text-[0.65rem] font-bold uppercase tracking-[0.13em] text-[#767676] sm:flex-row sm:items-center"><span>© {new Date().getFullYear()} I Cut Hair Grooming Studio</span><a href="#home" className="inline-flex items-center gap-2 transition-colors hover:text-[#F5F0E8]">Back to top <ArrowDown className="h-3.5 w-3.5 rotate-180" /></a></div>
+          <div className="mt-14 flex flex-col justify-between gap-5 border-t border-white/10 pt-6 text-[0.65rem] font-bold uppercase tracking-[0.13em] text-[#767676] sm:flex-row sm:items-center"><span>© {new Date().getFullYear()} Apex Cut Hair Grooming Studio</span><a href="#home" className="inline-flex items-center gap-2 transition-colors hover:text-[#F5F0E8]">Back to top <ArrowDown className="h-3.5 w-3.5 rotate-180" /></a></div>
         </div>
       </footer>
 

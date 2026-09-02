@@ -11,8 +11,8 @@ import {
 } from "lucide-react";
 
 export const siteConfig = {
-  name: "I Cut Hair Grooming Studio",
-  shortName: "I CUT",
+  name: "Apex Cut Hair Grooming Studio",
+  shortName: "APEX CUT",
   tagline: "Precision cuts. Confident style.",
   eyebrow: "Premium Grooming Studio • Muvattupuzha",
   description:

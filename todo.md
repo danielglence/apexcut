@@ -16,3 +16,9 @@
 - [x] Audit cramped spacing across section wrappers, cards, form fields, and mobile controls.
 - [x] Apply a consistent breathing-room pass across desktop and mobile layouts.
 - [x] Recheck responsive screenshots and save the updated checkpoint.
+
+## Brand Rename
+
+- [x] Audit all visible and metadata references to I Cut.
+- [x] Replace the brand name everywhere with Apex Cut.
+- [x] Verify no stale I Cut references remain and save the checkpoint.

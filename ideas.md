@@ -1,4 +1,4 @@
-# I Cut Hair Grooming Studio — Design Direction
+# Apex Cut Hair Grooming Studio — Design Direction
 
 ## Approach 1 — Noir Atelier
 **Very Brief Intro:** A dark luxury editorial direction with warm ivory typography, brass-gold accents, and cinematic grooming imagery. It feels like an intimate atelier: precise, tactile, and quietly confident.
@@ -49,7 +49,7 @@ Use short fade-and-rise reveals with deliberate stagger, image scale from 1.02 t
 - **Hierarchy:** oversized display headlines, small gold eyebrow labels, medium-weight body copy, and monospaced-feeling metadata through letter spacing rather than a third font.
 
 ## Brand Essence
-**Positioning:** I Cut is the considered grooming studio for people in Muvattupuzha who want precision, personal attention, and a sharper everyday style without the rush of a generic barbershop.
+**Positioning:** Apex Cut is the considered grooming studio for people in Muvattupuzha who want precision, personal attention, and a sharper everyday style without the rush of a generic barbershop.
 
 **Personality:** precise, composed, warm.
 
@@ -61,7 +61,7 @@ Example lines:
 - “Choose your cut. We’ll handle the details.”
 
 ## Wordmark & Logo
-Use a typographic wordmark reading **I CUT** in a high-contrast serif with generous tracking, paired with a simple custom circular monogram seal: a cut-through vertical line crossing an open `C` and `I` shape. The mark should work in gold on black and ivory on charcoal, with no generic barber-pole imagery.
+Use a typographic wordmark reading **APEX CUT** in a high-contrast serif with generous tracking, paired with a simple custom circular monogram seal: a cut-through vertical line crossing an open `C` and `I` shape. The mark should work in gold on black and ivory on charcoal, with no generic barber-pole imagery.
 
 ## Signature Brand Color
 **Atelier Gold — `#C6A15B`**. This is the ownable cue used for micro-lines, active states, star ratings, and primary booking actions.
