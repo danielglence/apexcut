@@ -106,36 +106,42 @@ export const reasons = [
 
 export const gallery = [
   {
+    id: "precision-cut",
     src: siteConfig.assets.cut,
     alt: "Close-up of a precise haircut being shaped with scissors",
     label: "Precision",
     size: "tall",
   },
   {
+    id: "beard-craft",
     src: siteConfig.assets.beard,
     alt: "Barber carefully shaping a short beard with a comb and trimmer",
     label: "Beard craft",
     size: "standard",
   },
   {
+    id: "studio-light",
     src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=85",
     alt: "Bright modern salon interior with styling stations and mirrors",
     label: "The studio",
     size: "wide",
   },
   {
+    id: "the-details",
     src: siteConfig.assets.tools,
     alt: "Grooming tools arranged on a charcoal stone counter",
     label: "The details",
     size: "standard",
   },
   {
+    id: "in-the-chair",
     src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=85",
     alt: "Barber working on a client's haircut in a dark studio",
     label: "In the chair",
     size: "standard",
   },
   {
+    id: "finish",
     src: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=85",
     alt: "Close-up view of classic barber tools and a finished haircut",
     label: "Finish",
